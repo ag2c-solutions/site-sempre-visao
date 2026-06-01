@@ -1,0 +1,178 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { posts } from '../../data/posts';
+import Carousel from '../../components/ui/Carousel.astro';
+import type { IPost } from '../../data/post.interface';
+
+export async function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+
+// Filter 4 other posts to show at the bottom
+function getRelatedPosts(currentSlug: string) {
+  const filtered = posts.filter((p) => p.slug !== currentSlug);
+  return filtered.slice(0, 4);
+}
+
+const relatedPosts = getRelatedPosts(post.slug);
+const defaultImage = "/images/placeholder.svg";
+---
+
+<Layout title={`${post.title} | Blog Sempre Visão`} description={post.description}>
+  <section id="PostPage" class="w-full max-w-[1200px] mx-auto px-3 md:px-[52px] pb-[72px] text-secondary">
+    
+    <!-- Top Image banner -->
+    <figure class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden mt-4 shadow-sm">
+      <img
+        src={
+          post.imageUrl
+            ? `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${post.imageUrl}`
+            : defaultImage
+        }
+        alt={post.title}
+        class="absolute inset-0 w-full h-full object-cover rounded-xl"
+        loading="eager"
+      />
+    </figure>
+
+    <h1 class="text-[24px] lg:text-[48px] font-bold text-primary mt-6 mb-4 text-start lg:text-center leading-tight">
+      {post.title}
+    </h1>
+
+    <!-- Rich Body Content -->
+    <article class="exam-prose w-full min-h-[400px] py-6 md:py-12 flex flex-col justify-center items-start gap-4">
+      <Fragment set:html={post.content} />
+    </article>
+
+    <!-- Optional Gallery Images Carousel -->
+    {post.galleryImages && post.galleryImages.length > 0 && (
+      <div class="flex w-full flex-col items-center justify-center my-12">
+        <h2 class="text-2xl font-bold text-primary mb-6">Galeria de Fotos</h2>
+        <Carousel loop={true} align="start" className="w-full">
+          {post.galleryImages.map((imageUrl, index) => {
+            return (
+              <div class="embla__slide shrink-0 basis-full md:basis-1/2 px-2">
+                <figure class="relative rounded-2xl overflow-hidden h-[300px] shadow-md border border-gray-100">
+                  <img
+                    src={`https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${imageUrl}`}
+                    alt={`${post.title} - Imagem ${index + 1}`}
+                    class="absolute inset-0 w-full h-full object-cover rounded-2xl"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
+            );
+          })}
+        </Carousel>
+      </div>
+    )}
+
+    <!-- Related Posts Recommendation Grid -->
+    <section id="RelatedPosts" class="w-full border-t border-gray-100 pt-12 mt-12">
+      <h2 class="text-[24px] lg:text-[48px] font-bold mb-6 text-primary leading-tight">Posts Relacionados:</h2>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-6">
+        {relatedPosts.map((item) => {
+          return (
+            <li class="rounded-[10px] shadow-[0px_0px_10px_rgba(0,0,0,0.15)] pb-[12px] overflow-hidden bg-white hover:shadow-md transition-shadow duration-300">
+              <a href={`/blog/${item.slug}`} class="flex flex-col gap-2 h-full justify-between">
+                <figure class="relative h-[200px] w-full shrink-0">
+                  <img
+                    src={
+                      item.imageUrl
+                        ? `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${item.imageUrl}`
+                        : defaultImage
+                    }
+                    alt={item.title}
+                    class="absolute inset-0 w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </figure>
+                <div class="flex flex-col gap-2 p-3 flex-grow">
+                  <h3 class="text-[16px] font-semibold text-primary leading-snug line-clamp-3 min-h-[72px]">{item.title}</h3>
+                  <p class="line-clamp-4 text-[13px] font-normal text-gray-500 leading-relaxed">{item.description}</p>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+
+  </section>
+</Layout>
+
+<style is:global>
+  @reference "../../styles/global.css";
+
+  /* Global styling for rich HTML content injected dynamically */
+  .exam-prose h1 {
+    @apply text-[26px] font-bold text-primary mb-3 text-start leading-tight;
+  }
+  .exam-prose h2 {
+    @apply text-[22px] font-bold text-primary mt-6 mb-2 text-start leading-tight;
+  }
+  .exam-prose p {
+    @apply text-[16px] text-gray-700 leading-relaxed mt-3;
+  }
+  .exam-prose ul {
+    @apply pl-6 my-4 list-disc flex flex-col gap-2 w-full;
+  }
+  .exam-prose li {
+    @apply text-[16px] text-gray-700 leading-relaxed;
+  }
+  .exam-prose details.faq-item {
+    @apply w-full border border-gray-200 rounded-[5px] mb-[10px] bg-white transition-all overflow-hidden;
+  }
+  .exam-prose details.faq-item summary {
+    @apply font-bold text-[16px] p-[15px] cursor-pointer hover:bg-gray-50 flex justify-between items-center list-none select-none;
+  }
+  .exam-prose details.faq-item summary::after {
+    content: '+';
+    @apply float-right font-normal text-sky-600 text-xl leading-none ml-2;
+  }
+  .exam-prose details.faq-item[open] summary::after {
+    content: '−';
+  }
+  .exam-prose details.faq-item p {
+    @apply p-[15px] border-t border-gray-100 bg-gray-50/50 mt-0;
+  }
+  .exam-prose a.cta-button {
+    @apply block w-fit mx-auto px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-bold text-[16px] text-center rounded-[5px] mt-6 transition-all shadow-sm;
+  }
+
+  @media (min-width: 1024px) {
+    .exam-prose h1 {
+      @apply text-[42px];
+    }
+    .exam-prose h2 {
+      @apply text-[30px];
+    }
+    .exam-prose p {
+      @apply text-[18px];
+    }
+    .exam-prose li {
+      @apply text-[18px];
+    }
+    .exam-prose details.faq-item summary {
+      @apply text-[18px];
+    }
+    .exam-prose a.cta-button {
+      @apply text-lg;
+    }
+  }
+
+  /* Slide class override for Embla slide items */
+  .embla__slide {
+    flex: 0 0 100%;
+  }
+  @media (min-width: 768px) {
+    .embla__slide {
+      flex: 0 0 50%;
+    }
+  }
+</style>

@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { surgeries } from '../../data/surgeries';
+---
+
+<Layout title="Cirurgias | Sempre Visão" description="Conheça as principais cirurgias oftalmológicas realizadas na clínica Sempre Visão, como cirurgia de catarata com tecnologia avançada.">
+  <section id="ExamsPage" class="w-full max-w-[1200px] mx-auto px-3 md:px-[52px] pb-[72px] text-secondary">
+    <figure class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden mt-4 shadow-sm">
+      <img
+        src="/IMG_0898.webp"
+        alt="equipe de médicos realizando um exame oftalmológico"
+        class="absolute inset-0 w-full h-full object-cover rounded-xl"
+      />
+    </figure>
+    <article class="mt-6 flex flex-col gap-4">
+      <h1 class="text-[24px] lg:text-[48px] font-bold py-3 text-start leading-tight text-primary">
+        Cirurgias Oftalmológicas na Sempre Visão: Tecnologia e Cuidado para a Saúde dos Seus Olhos
+      </h1>
+      <section class="flex flex-col gap-3">
+        <p class="text-[18px] font-normal leading-relaxed text-gray-700">
+          Na Clínica Oftalmológica Sempre Visão, compreendemos que a decisão
+          por uma cirurgia ocular é um passo importante para a recuperação da
+          sua qualidade de vida. Por isso, aliamos tecnologia de ponta, uma
+          equipe de cirurgiões experientes e um atendimento humanizado para
+          garantir que você tenha a melhor experiência e os resultados mais
+          seguros e eficazes.
+        </p>
+        <p class="text-[18px] font-normal leading-relaxed text-gray-700">
+          Nossa estrutura moderna em Ribeirão Preto foi projetada para
+          oferecer um fluxo ágil e confortável, desde a primeira consulta até
+          o acompanhamento pós-operatório. Com um centro cirúrgico equipado
+          com o que há de mais avançado na oftalmologia, realizamos
+          procedimentos com precisão, minimizando riscos e acelerando a sua
+          recuperação.
+        </p>
+      </section>
+    </article>
+    <section class="mt-8 flex flex-col gap-4">
+      <h2 class="font-bold text-[20px] md:text-[22px] text-primary">
+        Seu bem-estar e sua visão são nossas prioridades. Conheça as principais cirurgias realizadas em nossa clínica:
+      </h2>
+      <ul class="ExamsList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6 lg:py-12">
+        {surgeries.map((surgery) => {
+          return (
+            <li class="p-[4px_12px_24px] rounded-[5px] shadow-[0_0_3px_1px_rgba(0,0,0,0.2)] hover:shadow-md transition-shadow duration-300 bg-white">
+              <a href={`/cirurgias/${surgery.slug}`} class="flex flex-col gap-2 h-full justify-between">
+                <article class="flex flex-col gap-2">
+                  <h3 class="text-[18px] font-bold min-h-[60px] pt-2 text-primary leading-tight">{surgery.label}</h3>
+                  <p class="line-clamp-6 text-[14px] font-normal text-gray-600 leading-relaxed">{surgery.description}</p>
+                </article>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  </section>
+</Layout>

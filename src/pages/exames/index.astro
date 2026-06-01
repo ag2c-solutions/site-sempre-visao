@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { exams } from '../../data/exams';
+---
+
+<Layout title="Exames | Sempre Visão" description="Realize seus exames oftalmológicos na clínica Sempre Visão. Contamos com tecnologia de ponta para diagnósticos oculares precisos.">
+  <section id="ExamsPage" class="w-full max-w-[1200px] mx-auto px-3 md:px-[52px] pb-[72px] text-secondary">
+    <figure class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden mt-4 shadow-sm">
+      <img
+        src="/IMG_0898.webp"
+        alt="equipe de médicos realizando um exame oftalmológico"
+        class="absolute inset-0 w-full h-full object-cover rounded-xl"
+      />
+    </figure>
+    <article class="mt-6 flex flex-col gap-4">
+      <h1 class="text-[24px] lg:text-[48px] font-bold py-3 text-start leading-tight text-primary">
+        Na Clínica Sempre Visão, a Saúde dos Seus Olhos é a Nossa Prioridade: Conheça Nossos Exames
+      </h1>
+      <p class="text-[20px] font-semibold pb-1 text-primary">
+        Tecnologia de ponta e uma equipe dedicada para garantir um diagnóstico
+        preciso e um cuidado completo para a sua visão em Ribeirão Preto.
+      </p>
+
+      <section class="flex flex-col gap-3">
+        <p class="text-[18px] font-normal leading-relaxed text-gray-700">
+          Cuidar da saúde ocular é fundamental para uma vida plena e cheia de
+          cores. Na Clínica de Oftalmologia Sempre Visão, aliamos a
+          experiência de um corpo clínico qualificado à mais avançada
+          tecnologia em exames oftalmológicos. Nosso compromisso é oferecer um
+          diagnóstico detalhado e confiável, permitindo o tratamento adequado
+          para as mais diversas condições oculares.
+        </p>
+        <p class="text-[18px] font-normal leading-relaxed text-gray-700">
+          Entendemos que a realização de exames pode gerar dúvidas e
+          ansiedade. Por isso, preparamos um ambiente acolhedor e uma
+          comunicação clara, para que você se sinta seguro e confortável em
+          todas as etapas do seu atendimento.
+        </p>
+        <p class="text-[18px] font-normal leading-relaxed text-gray-700">
+          Conheça em detalhes os exames que realizamos e entenda como podemos
+          ajudar a preservar o seu bem mais precioso: a sua visão.
+        </p>
+      </section>
+    </article>
+    <section class="mt-8 flex flex-col gap-4">
+      <h2 class="font-bold text-[20px] md:text-[22px] text-primary">Nossos Exames Oftalmológicos:</h2>
+      <p class="text-[16px] text-gray-600 font-medium">
+        Oferecemos uma gama completa de exames diagnósticos e procedimentos a
+        laser, essenciais para a prevenção e tratamento de doenças oculares.
+      </p>
+      <ul class="ExamsList grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6 lg:py-12">
+        {exams.map((exam) => {
+          return (
+            <li class="p-[4px_12px_24px] rounded-[5px] shadow-[0_0_3px_1px_rgba(0,0,0,0.2)] hover:shadow-md transition-shadow duration-300 bg-white">
+              <a href={`/exames/${exam.slug}`} class="flex flex-col gap-2 h-full justify-between">
+                <article class="flex flex-col gap-2">
+                  <h3 class="text-[18px] font-bold min-h-[60px] pt-2 text-primary leading-tight">{exam.label}</h3>
+                  <p class="line-clamp-6 text-[14px] font-normal text-gray-600 leading-relaxed">{exam.description}</p>
+                </article>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  </section>
+</Layout>

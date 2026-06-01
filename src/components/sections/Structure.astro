@@ -1,0 +1,30 @@
+---
+const images = [
+  "/WhatsApp-Image-2025-03-13-at-18.06.36.webp",
+  "/WhatsApp Image 2025-03-16 at 08.32.18_4f256de1.jpg",
+  "/WhatsApp Image 2025-03-16 at 08.32.44_b69e60cb.jpg",
+  "/WhatsApp Image 2025-03-16 at 08.33.08_283f9759.jpg",
+  "/WhatsApp-Image-2025-03-13-at-18.06.36-_4_.webp",
+  "/WhatsApp-Image-2025-03-13-at-18.07.03-_2_.webp"
+];
+---
+<section id="Structure" class="w-full max-w-[1200px] mx-auto py-12 px-3 md:px-[72px] lg:px-[110px] flex flex-col items-center justify-center gap-9 min-h-[600px]">
+  <div>
+    <h2 class="text-[36px] lg:text-[48px] text-primary font-semibold text-center">Nossa estrutura</h2>
+  </div>
+
+  <ul class="structure w-full min-h-[450px] gap-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    {images.map((imgSrc, index) => (
+      <li class="w-full">
+        <figure class="relative w-full h-[300px] overflow-hidden rounded-[10px] shadow hover:shadow-lg transition-shadow duration-300">
+          <img 
+            src={imgSrc} 
+            alt={`Foto da estrutura Sempre Visão ${index + 1}`} 
+            class="absolute inset-0 w-full h-full object-cover rounded-[10px] hover:scale-105 transition-transform duration-500" 
+            loading="lazy" 
+          />
+        </figure>
+      </li>
+    ))}
+  </ul>
+</section>

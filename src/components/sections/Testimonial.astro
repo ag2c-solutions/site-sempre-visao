@@ -1,0 +1,247 @@
+---
+const testimonials = [
+  {
+    id: 1,
+    content: `Minha filha foi muito bem atendida pela Dra. Camila e toda a equipe. Aparelhos de última geração para diagnóstico e acompanhamento. Seguiremos o acompanhamento anual dela e retornarei para fazer os meus exames também!`,
+    author: 'Paula Brigagão Alcântara',
+    rating: 5
+  },
+  {
+    id: 2,
+    content: `Muito bom atendimento, e maquinas de exames modernas e profissionais capacitados, e o mais importante ATENCIOSOS. Obrigado, gostei muito.`,
+    author: 'Carlos Fernandes Bonfim',
+    rating: 5
+  },
+  {
+    id: 3,
+    content: 'Ótimo atendimento. Todos muito atenciosos, desde a recepcionista até toda parte médica. Super indico!',
+    author: 'Carlos Bianchini',
+    rating: 5
+  }
+];
+---
+<section id="TestimonialSection" class="w-full max-w-[1200px] mx-auto py-12 px-3 md:px-[72px] lg:px-[110px] flex flex-col items-center justify-center gap-6 min-h-[600px]">
+  <div>
+    <h2 class="text-[36px] lg:text-[48px] text-primary font-semibold text-center leading-tight">O que os nossos pacientes estão dizendo</h2>
+  </div>
+
+  <div class="testimonial-container-outer w-full py-8 bg-transparent relative">
+    <div class="testimonial-slider flex items-center justify-center relative">
+      
+      <!-- Prev Button -->
+      <button class="nav-button nav-button-prev absolute left-0 lg:left-[7rem] z-30 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary text-white border-none cursor-pointer shadow-md hover:bg-primary/80 transition-colors" aria-label="Ver depoimento anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+
+      <!-- Carousel Track / Cards -->
+      <div class="carousel-container relative flex justify-center items-center w-full min-h-[280px] py-8 overflow-hidden lg:overflow-visible">
+        {testimonials.map((testimonial, index) => {
+          let positionClass = "hidden-card";
+          if (index === 0) positionClass = "center";
+          else if (index === testimonials.length - 1) positionClass = "left";
+          else if (index === 1) positionClass = "right";
+
+          return (
+            <article
+              data-index={index}
+              class={`testimonial-card absolute transition-all duration-[900ms] ease-in-out bg-white rounded-lg shadow-md hover:shadow-lg border border-gray-100 ${positionClass}`}
+              aria-hidden={positionClass !== 'center' ? "true" : "false"}
+            >
+              <div class="testimonial-content p-6 flex flex-col justify-between h-full">
+                <blockquote>
+                  <p class="testimonial-text text-gray-600 text-[14px] leading-relaxed line-clamp-5 overflow-hidden">
+                    {testimonial.content}
+                  </p>
+                </blockquote>
+                <footer class="testimonial-footer mt-4">
+                  <cite class="testimonial-author not-italic font-semibold text-[14px] text-gray-900 block">
+                    {testimonial.author}
+                  </cite>
+                  <div class="testimonial-rating flex mt-1" aria-label={`Avaliação: ${testimonial.rating} de 5 estrelas`}>
+                    {Array.from({ length: testimonial.rating }).map(() => (
+                      <span class="star text-amber-400">★</span>
+                    ))}
+                  </div>
+                </footer>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- Next Button -->
+      <button class="nav-button nav-button-next absolute right-0 lg:right-[7rem] z-30 flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-primary text-white border-none cursor-pointer shadow-md hover:bg-primary/80 transition-colors" aria-label="Ver próximo depoimento">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </div>
+
+    <!-- Pagination Dots -->
+    <div class="pagination flex justify-center mt-8 gap-2">
+      {testimonials.map((_, index) => (
+        <button
+          data-dot-index={index}
+          class={`pagination-dot w-8 h-2 rounded-full border-none p-0 cursor-pointer transition-colors ${index === 0 ? 'bg-primary' : 'bg-gray-300'}`}
+          aria-label={`Ir para o depoimento ${index + 1}`}
+          aria-current={index === 0 ? 'true' : 'false'}
+        />
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Base card sizes & responsive widths */
+  .testimonial-card {
+    width: 280px;
+    min-height: 230px;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .testimonial-card {
+      width: 360px;
+      min-height: 260px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonial-card {
+      width: 420px;
+      min-height: 280px;
+    }
+  }
+
+  /* 3D sliding classes */
+  .testimonial-card.center {
+    z-index: 20;
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(-12px) translateX(-50%);
+    left: 50%;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+  }
+
+  .testimonial-card.left {
+    z-index: 10;
+    opacity: 0;
+    filter: blur(2px);
+    transform: scale(0.85) translateY(0) translateX(-170px);
+    left: 50%;
+  }
+
+  .testimonial-card.right {
+    z-index: 10;
+    opacity: 0;
+    filter: blur(2px);
+    transform: scale(0.85) translateY(0) translateX(50px);
+    left: 50%;
+  }
+
+  .testimonial-card.hidden-card {
+    z-index: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7) translateY(0) translateX(-50%);
+    left: 50%;
+  }
+
+  @media (min-width: 720px) {
+    .testimonial-card.left {
+      opacity: 0.55;
+      filter: blur(1px);
+      transform: scale(0.85) translateY(0) translateX(-340px);
+    }
+    .testimonial-card.right {
+      opacity: 0.55;
+      filter: blur(1px);
+      transform: scale(0.85) translateY(0) translateX(120px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonial-card.left {
+      opacity: 0.65;
+      filter: blur(1px);
+      transform: scale(0.85) translateY(0) translateX(-450px);
+    }
+    .testimonial-card.right {
+      opacity: 0.65;
+      filter: blur(1px);
+      transform: scale(0.85) translateY(0) translateX(230px);
+    }
+  }
+</style>
+
+<script>
+  function initTestimonialSlider() {
+    const prevBtn = document.querySelector('.nav-button-prev');
+    const nextBtn = document.querySelector('.nav-button-next');
+    const cards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.pagination-dot');
+
+    if (!cards.length) return;
+
+    let activeIndex = 0;
+    const length = cards.length;
+
+    function updateCarousel() {
+      cards.forEach((card, index) => {
+        card.className = card.className.replace(/\b(center|left|right|hidden-card)\b/g, '').trim();
+
+        // Calculate visual positions relative to activeIndex
+        let pos = 'hidden-card';
+        if (index === activeIndex) {
+          pos = 'center';
+        } else if (index === (activeIndex === 0 ? length - 1 : activeIndex - 1)) {
+          pos = 'left';
+        } else if (index === (activeIndex === length - 1 ? 0 : activeIndex + 1)) {
+          pos = 'right';
+        }
+
+        card.classList.add(pos);
+        card.setAttribute('aria-hidden', pos !== 'center' ? 'true' : 'false');
+      });
+
+      // Update dots
+      dots.forEach((dot, index) => {
+        dot.className = dot.className.replace(/\b(bg-primary|bg-gray-300)\b/g, '').trim();
+        if (index === activeIndex) {
+          dot.classList.add('bg-primary');
+          dot.setAttribute('aria-current', 'true');
+        } else {
+          dot.classList.add('bg-gray-300');
+          dot.setAttribute('aria-current', 'false');
+        }
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        activeIndex = activeIndex === 0 ? length - 1 : activeIndex - 1;
+        updateCarousel();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        activeIndex = activeIndex === length - 1 ? 0 : activeIndex + 1;
+        updateCarousel();
+      });
+    }
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const indexAttr = dot.getAttribute('data-dot-index');
+        if (indexAttr !== null) {
+          activeIndex = parseInt(indexAttr, 10);
+          updateCarousel();
+        }
+      });
+    });
+  }
+
+  // Initialize
+  initTestimonialSlider();
+  document.addEventListener('astro:page-load', initTestimonialSlider);
+</script>

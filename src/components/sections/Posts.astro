@@ -1,0 +1,90 @@
+---
+import { posts } from '../../data/posts';
+import type { ImageMetadata } from 'astro';
+
+const highlightedPost = posts[0]; // Assuming the first post is the highlighted one
+const smallPosts = posts.slice(1, 5); // Get the next 4 posts
+const defaultImage = "/placeholder.svg";
+
+function getImageSrc(imageUrl: string | ImageMetadata): string {
+  if (!imageUrl) return defaultImage;
+  if (typeof imageUrl === 'string') {
+    return `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${imageUrl}`;
+  }
+  // ImageMetadata object from local import
+  return imageUrl.src;
+}
+---
+<section class="recentPostsSection w-full max-w-[1200px] mx-auto py-12 px-3 md:px-[72px] lg:px-[110px] flex flex-col items-center justify-center gap-6 min-h-[600px]">
+  <div>
+    <h2 class="text-[36px] lg:text-[48px] text-primary font-semibold text-center leading-tight">Últimos Posts</h2>
+  </div>
+
+  <section class="recentPostsContainer w-full flex flex-col md:flex-row gap-4 md:gap-6 max-w-full md:max-w-[1200px] mx-auto">
+    
+    <!-- Highlighted Left Post -->
+    <article class="highlightedPost bg-[#ecebeb] rounded-xl overflow-hidden flex-1 md:max-w-[50%] flex flex-col shadow-sm">
+      <figure class="w-full relative">
+        <img
+          src={getImageSrc(highlightedPost.imageUrl)}
+          alt={highlightedPost.title}
+          class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
+          loading="lazy"
+        />
+      </figure>
+      <div class="postContent p-4 flex flex-col flex-grow gap-2">
+        <h3 class="postTitle text-[20px] md:text-[22px] font-semibold text-primary mb-1 leading-snug">
+          {highlightedPost.title}
+        </h3>
+        <p class="postExcerpt text-[13px] md:text-[14px] text-gray-600 line-clamp-3 md:line-clamp-[12] leading-relaxed">
+          {highlightedPost.description}
+        </p>
+      </div>
+      <div class="action p-4 mt-auto">
+        <a
+          href={`/blog/${highlightedPost.slug}`}
+          class="readMoreButton w-full block p-3 bg-tertiary border border-gray-200 rounded-[6px] text-primary text-[14px] font-bold text-center hover:bg-secondary hover:text-tertiary transition-all duration-300 shadow-sm"
+        >
+          Continuar lendo
+        </a>
+      </div>
+    </article>
+
+    <!-- Small Right Posts Grid -->
+    <div class="smallPostsContainer flex-1 flex flex-col gap-4">
+      <ul class="smallPostsGrid grid grid-cols-1 sm:grid-cols-2 gap-4 h-full">
+        {smallPosts.map((post) => (
+          <li class="h-full">
+            <article class="smallPost bg-[#ecebeb] rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow transition-shadow duration-300">
+              <figure class="w-full relative">
+                <img
+                  src={getImageSrc(post.imageUrl)}
+                  alt={post.title}
+                  class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
+                  loading="lazy"
+                />
+              </figure>
+              <div class="postContent p-3 flex flex-col flex-grow gap-1">
+                <h3 class="postTitle text-[16px] font-semibold text-primary mb-1 leading-tight line-clamp-2">
+                  {post.title}
+                </h3>
+                <p class="postExcerpt text-[12px] text-gray-600 line-clamp-3 leading-relaxed">
+                  {post.description}
+                </p>
+              </div>
+              <div class="action p-3 mt-auto">
+                <a
+                  href={`/blog/${post.slug}`}
+                  class="readMoreButton w-full block p-2 bg-tertiary border border-gray-200 rounded-[6px] text-primary text-[12px] font-bold text-center hover:bg-secondary hover:text-tertiary transition-all duration-300 shadow-sm"
+                >
+                  Continuar lendo
+                </a>
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+  </section>
+</section>

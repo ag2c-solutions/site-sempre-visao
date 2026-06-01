@@ -1,0 +1,78 @@
+---
+interface Props {
+  className?: string;
+  showArrows?: boolean;
+  loop?: boolean;
+  align?: 'start' | 'center' | 'end';
+}
+
+const { className = "", showArrows = true, loop = true, align = 'start' } = Astro.props;
+---
+<div 
+  class={`embla astro-embla-carousel overflow-hidden relative ${className}`}
+  data-loop={loop ? "true" : "false"}
+  data-align={align}
+>
+  <div class="embla__container flex">
+    <slot />
+  </div>
+
+  {showArrows && (
+    <>
+      <button class="embla__prev absolute top-1/2 left-4 -translate-y-1/2 bg-white text-primary border border-gray-200 rounded-full w-10 h-10 flex items-center justify-center cursor-pointer shadow-md hover:bg-gray-50 transition-colors z-20" aria-label="Anterior">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <button class="embla__next absolute top-1/2 right-4 -translate-y-1/2 bg-white text-primary border border-gray-200 rounded-full w-10 h-10 flex items-center justify-center cursor-pointer shadow-md hover:bg-gray-50 transition-colors z-20" aria-label="Próximo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="m9 18 6-6-6-6"/></svg>
+      </button>
+    </>
+  )}
+</div>
+
+<script>
+  import EmblaCarousel from 'embla-carousel';
+
+  function initCarousels() {
+    const carousels = document.querySelectorAll('.astro-embla-carousel');
+    carousels.forEach((carousel) => {
+      // Avoid double initialization
+      if (carousel.classList.contains('initialized')) return;
+
+      const prevBtn = carousel.querySelector('.embla__prev');
+      const nextBtn = carousel.querySelector('.embla__next');
+
+      const loop = carousel.getAttribute('data-loop') === 'true';
+      const align = carousel.getAttribute('data-align') as 'start' | 'center' | 'end' || 'start';
+
+      // Initialize Embla
+      const emblaApi = EmblaCarousel(carousel as HTMLElement, {
+        loop,
+        align,
+        containScroll: 'trimSnaps'
+      });
+
+      if (emblaApi) {
+        carousel.classList.add('initialized');
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            emblaApi.scrollPrev();
+          });
+        }
+        if (nextBtn) {
+          nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            emblaApi.scrollNext();
+          });
+        }
+      }
+    });
+  }
+
+  // Initialize on page load
+  initCarousels();
+
+  // Support Astro View Transitions if used in the future
+  document.addEventListener('astro:page-load', initCarousels);
+</script>

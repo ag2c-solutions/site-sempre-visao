@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CarouselBanner from '../components/sections/CarouselBanner.astro';
+import About from '../components/sections/About.astro';
+import Services from '../components/sections/Services.astro';
+import Structure from '../components/sections/Structure.astro';
+import Team from '../components/sections/Team.astro';
+import Testimonial from '../components/sections/Testimonial.astro';
+import Posts from '../components/sections/Posts.astro';
+import Location from '../components/sections/Location.astro';
+---
+
+<Layout title="Sempre Visão | Clínica Oftalmológica da sua Família">
+  <CarouselBanner />
+  <About />
+  <div id="Servicos" class="w-full bg-primary">
+    <Services />
+  </div>
+  <Structure />
+  <Team />
+  <Testimonial />
+  <Posts />
+  <Location />
+</Layout>

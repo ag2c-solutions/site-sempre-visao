@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /.next
+
+# Host
+Host: https://semprevisao.com.br
+
+# Sitemaps
+Sitemap: https://semprevisao.com.br/sitemap.xml

@@ -6,6 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "deploy": "astro build && cp -a dist/. ../../public_html/",
     "preview": "astro preview",
     "astro": "astro"
   },

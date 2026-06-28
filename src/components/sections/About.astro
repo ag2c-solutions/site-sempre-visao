@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 ---
 <section id="About" class="w-full max-w-[1200px] mx-auto py-12 px-3 md:px-[72px] lg:px-[110px] flex flex-col justify-center items-center min-h-[600px] gap-6">
   <h2 class="text-[36px] lg:text-[48px] text-primary font-semibold">A Sempre Visão</h2>
@@ -24,9 +25,11 @@
       </p>
     </article>
     <figure class="relative h-[400px] w-full">
-      <img
+      <Image
         src="/IMG_0898.webp"
-        alt="equipe de médicos realizando um exame oftalmológico"
+        alt="Equipe de médicos realizando exame oftalmológico na Sempre Visão"
+        width={800}
+        height={400}
         class="absolute inset-0 w-full h-full object-cover rounded-[10px]"
         loading="lazy"
       />

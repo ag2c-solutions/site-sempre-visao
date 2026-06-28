@@ -8,9 +8,48 @@ import Team from '../components/sections/Team.astro';
 import Testimonial from '../components/sections/Testimonial.astro';
 import Posts from '../components/sections/Posts.astro';
 import Location from '../components/sections/Location.astro';
+
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "Sempre Visão",
+  "url": "https://semprevisao.com.br",
+  "logo": "https://semprevisao.com.br/logo.png",
+  "description": "Clínica Oftalmológica especializada em cirurgia de catarata, exames e consultas.",
+  "department": [
+    {
+      "@type": "MedicalClinic",
+      "name": "Sempre Visão - Ribeirão Preto",
+      "telephone": "+55 16 99262-7740",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. São Sebastião, 614 - Centro",
+        "addressLocality": "Ribeirão Preto",
+        "addressRegion": "SP",
+        "postalCode": "14015-040",
+        "addressCountry": "BR"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "name": "Sempre Visão - Franca",
+      "telephone": "+55 16 99262-7740",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Gen. Telles, 1259 - Centro",
+        "addressLocality": "Franca",
+        "addressRegion": "SP",
+        "postalCode": "14405-090",
+        "addressCountry": "BR"
+      }
+    }
+  ]
+};
 ---
 
 <Layout title="Sempre Visão | Clínica Oftalmológica da sua Família">
+  <script type="application/ld+json" set:html={JSON.stringify(medicalClinicSchema)} />
+  <h1 class="sr-only">Clínica Oftalmológica Sempre Visão: Especialistas em Catarata e Saúde Ocular</h1>
   <CarouselBanner />
   <About />
   <div id="Servicos" class="w-full bg-primary">

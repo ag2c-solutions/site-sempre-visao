@@ -1,11 +1,49 @@
 import type { IPostList } from './post.interface';
 
+const EXTERNAL_IMG_URL = 'https://backup.clinicassempresorrindo.com.br/storage/app/uploads/';
+
 export const posts: IPostList = [
+    {
+        title: 'Cirurgia de Catarata a Laser: Recupere a Nitidez da Sua Visão',
+        description: 'Descubra como a cirurgia moderna de catarata a laser pode devolver a clareza à sua visão em um procedimento rápido, seguro e indolor. Pare de enxergar o mundo através de uma lente embaçada.',
+        slug:'cirurgia-catarata-laser-recupere-nitidez',
+        imageUrl: '/catarata_recuperacao_visao.png',
+        content: `
+                <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
+                    <p>Já imaginou voltar a enxergar as cores vivas e os detalhes do mundo ao seu redor sem aquele "embaçamento" constante? Se você ou alguém da sua família foi diagnosticado com <strong>catarata</strong>, a <strong>Cirurgia de Catarata a Laser</strong> pode devolver não apenas a sua visão, mas a sua qualidade de vida.</p>
+                    <p>Na Clínica Sempre Visão, compreendemos que a visão turva dificulta tarefas simples do dia a dia, como ler, dirigir ou reconhecer rostos. Neste artigo, revelamos como a tecnologia avançada torna a recuperação da visão mais rápida e segura do que nunca.</p>
+                </section>
+
+                <section id="o-problema" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mt-6 mb-4">O Fim da Visão Embaçada</h2>
+                    <p>A catarata é o processo natural de opacificação do cristalino, a lente natural dos nossos olhos. É como tentar olhar através de uma janela suja ou embaçada. A boa notícia? Você não precisa se conformar com isso e perder sua independência.</p>
+                    <p>O tratamento moderno substitui o cristalino opaco por uma lente intraocular (LIO) de alta tecnologia, desenhada sob medida para o seu olho. Em muitos casos, essa lente também corrige problemas como miopia, astigmatismo e vista cansada (presbiopia) em um único procedimento.</p>
+                </section>
+
+                <section id="beneficios" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mt-6 mb-4">Por que Escolher a Cirurgia a Laser?</h2>
+                    <ul class="list-disc pl-6 space-y-2 mt-4">
+                        <li><strong>Precisão Milimétrica:</strong> O laser automatiza etapas cruciais da cirurgia com uma exatidão que o olho humano não alcança.</li>
+                        <li><strong>Recuperação Acelerada:</strong> Por ser menos invasivo, você volta à sua rotina muito mais rápido.</li>
+                        <li><strong>Maior Segurança:</strong> A tecnologia a laser reduz os riscos e proporciona resultados altamente previsíveis.</li>
+                        <li><strong>Procedimento Indolor:</strong> A cirurgia é rápida e realizada com anestesia em gotas, garantindo seu total conforto.</li>
+                    </ul>
+                </section>
+
+                <section id="cta" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mt-8 bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Volte a Enxergar com Clareza</h3>
+                    <p class="text-blue-800 mb-4">Não deixe a catarata limitar a sua vida. O procedimento é rápido, moderno e transformador.</p>
+                    <a href="/#contato" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-md transition-colors duration-300">
+                        Agende Sua Avaliação Agora
+                    </a>
+                </section>
+        `
+    },
     {
         title: 'Cirurgia Refrativa a Laser: Liberdade de Óculos para Miopia, Astigmatismo e Hipermetropia',
         description: 'Descubra como a cirurgia refrativa a laser funciona, quais são as principais técnicas (LASIK e PRK) e como ela pode libertar você do uso de óculos ou lentes de contato.',
         slug:'cirurgia-refrativa-laser-liberdade-oculos-miopia',
-        imageUrl: 'cirurgia_refrativa_liberdade.png',
+        imageUrl: EXTERNAL_IMG_URL + 'cirurgia_refrativa_liberdade.png',
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Imagine acordar de manhã e conseguir enxergar o despertador com nitidez, praticar os seus esportes favoritos sem o incômodo das lentes de contato ou não ter as lentes dos óculos embaçadas pela chuva. Se você sofre de <strong>miopia, hipermetropia ou astigmatismo</strong>, a <strong>Cirurgia Refrativa a Laser</strong> pode ser a chave para essa liberdade.</p>
@@ -58,7 +96,7 @@ export const posts: IPostList = [
         title: 'Presbiopia: O que é e como tratar a vista cansada',
         description: 'Dificuldade para ler de perto? Conheça os sintomas da presbiopia, também conhecida como vista cansada, e as melhores opções de tratamento na Clinica Sempre Visão.',
         slug:'presbiopia-o-que-e-sintomas-e-tratamentos',
-        imageUrl: 'vista_cansada_exame.png',
+        imageUrl: EXTERNAL_IMG_URL + 'vista_cansada_exame.png',
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Você já se pegou esticando o braço para conseguir ler as letras pequenas de uma bula ou do menu de um restaurante? Esse é o clássico sinal da <strong>presbiopia</strong>, popularmente conhecida como vista cansada.</p>
@@ -106,7 +144,7 @@ export const posts: IPostList = [
         title: 'Olho Seco em Ribeirão Preto: Como o Clima Afeta a Sua Visão e as Melhores Formas de Tratamento',
         description: 'Descubra como o clima quente e seco de Ribeirão Preto agrava a Síndrome do Olho Seco e conheça os tratamentos mais modernos oferecidos pela Clinica Sempre Visão para recuperar o seu conforto visual.',
         slug:'olho-seco-ribeirao-preto-sintomas-tratamentos',
-        imageUrl: 'Jovem esfregando os olhos com força, principal fator de risco para o desenvolvimento e agravamento do ceratocone.webp',
+        imageUrl: EXTERNAL_IMG_URL + 'Jovem esfregando os olhos com força, principal fator de risco para o desenvolvimento e agravamento do ceratocone.webp',
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Quem vive em <strong>Ribeirão Preto</strong> conhece bem os desafios que o clima seco e quente da região impõe à nossa saúde. E os nossos olhos não são exceção.</p>
@@ -153,7 +191,7 @@ export const posts: IPostList = [
     title: 'Lentes Intraoculares na Cirurgia de Catarata: Qual a Melhor Opção para Si?',
     description: 'Entenda os diferentes tipos de lentes intraoculares (LIOs) implantadas na cirurgia de catarata. Descubra as vantagens das lentes monofocais, tóricas e multifocais para conquistar a independência dos óculos.',
     slug: 'tipos-lentes-intraoculares-cirurgia-de-catarata-opcoes',
-    imageUrl: 'Oftalmologista comparando tipos de lentes intraoculares (monofocal e multifocal) para paciente de cirurgia de catarata.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Oftalmologista comparando tipos de lentes intraoculares (monofocal e multifocal) para paciente de cirurgia de catarata.webp',
     content: `
       <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
           <p>O momento de planejar a sua <strong>cirurgia de catarata</strong> é também a oportunidade perfeita para repensar a sua visão como um todo. Quando o cristalino opaco (a catarata) é removido, ele precisa ser substituído por uma lente artificial transparente, conhecida como <strong>Lente Intraocular (LIO)</strong>.</p>
@@ -203,7 +241,7 @@ export const posts: IPostList = [
     title: 'Cirurgia de Catarata e Glaucoma: É Possível Tratar os Dois Problemas Juntos?',
     description: 'Tem glaucoma e foi diagnosticado com catarata? Descubra como a cirurgia de catarata pode ajudar a baixar a pressão intraocular e como as cirurgias combinadas podem proteger a sua visão a longo prazo.',
     slug: 'cirurgia-de-catarata-e-glaucoma-tratamento-combinado',
-    imageUrl: 'Mulher sorrindo segurando óculos de grau em consultório, decidindo pela cirurgia refrativa..webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Mulher sorrindo segurando óculos de grau em consultório, decidindo pela cirurgia refrativa..webp',
     content: `
       <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
           <p>Muitos pacientes que nos procuram na Clinica Sempre Visão partilham de uma preocupação comum: <em>"Tenho glaucoma. A <strong>cirurgia de catarata</strong> é segura para mim? Ela pode piorar o meu glaucoma?"</em></p>
@@ -246,7 +284,7 @@ export const posts: IPostList = [
         title: 'Exames Pré-Operatórios para Cirurgia de Catarata: O Segredo para uma Visão Perfeita',
         description: 'Descubra quais são os exames essenciais antes da cirurgia de catarata. Entenda a importância da Biometria Ocular, Topografia e Microscopia Especular para garantir um procedimento seguro e o implante da lente ideal.',
         slug:'exames-pre-operatorios-cirurgia-de-catarata-biometria',
-        imageUrl: 'Paciente realizando exame de medição de pressão ocular (tonometria) para prevenção do glaucoma.webp', // Inserir URL da imagem aqui
+        imageUrl: EXTERNAL_IMG_URL + 'Paciente realizando exame de medição de pressão ocular (tonometria) para prevenção do glaucoma.webp', // Inserir URL da imagem aqui
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Muitas pessoas focam toda a sua atenção no dia da <strong>cirurgia de catarata</strong> e esquecem-se de que o verdadeiro sucesso do procedimento começa muito antes de entrar no bloco operatório: na fase de exames pré-operatórios.</p>
@@ -322,7 +360,7 @@ export const posts: IPostList = [
         title: 'Cirurgia de Catarata em Ribeirão Preto: Os Riscos de Adiar e Sinais de que Chegou a Hora de Operar',
         description: 'Esperar a catarata "amadurecer" é um mito perigoso. Entenda os riscos de adiar o tratamento, os sinais de alerta no seu dia a dia e por que realizar a cirurgia de catarata em Ribeirão Preto na Clinica Sempre Visão é a escolha mais segura.',
         slug:'cirurgia-de-catarata-em-ribeirao-preto-riscos-de-adiar',
-        imageUrl: 'como-saber-a-hora-certa-de-operar-a-catarata.JPG', // Inserir URL da imagem aqui
+        imageUrl: EXTERNAL_IMG_URL + 'como-saber-a-hora-certa-de-operar-a-catarata.JPG', // Inserir URL da imagem aqui
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Muitos pacientes que nos procuram para realizar a <strong>cirurgia de catarata em Ribeirão Preto</strong> chegam com a mesma dúvida: <em>"Doutor, não é melhor esperar a catarata amadurecer mais um pouco para operar?"</em></p>
@@ -403,7 +441,7 @@ export const posts: IPostList = [
         title: 'Cirurgia de Catarata a Laser e Ultrassom em Ribeirão Preto: Qual a Melhor Tecnologia?',
         description: 'Entenda as diferenças entre a facoemulsificação (ultrassom) e a cirurgia assistida por laser. Descubra como a Clinica Sempre Visão utiliza a mais alta tecnologia para a cirurgia de catarata em Ribeirão Preto.',
         slug:'cirurgia-de-catarata-laser-ultrassom-ribeirao-preto',
-        imageUrl: 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', // Inserir URL da imagem aqui
+        imageUrl: EXTERNAL_IMG_URL + 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', // Inserir URL da imagem aqui
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Ao procurar por <strong>cirurgia de catarata em Ribeirão Preto</strong>, é comum deparar-se com termos técnicos que podem gerar dúvidas: afinal, a cirurgia é feita com laser ou com ultrassom? Qual é a técnica mais segura e moderna para os meus olhos?</p>
@@ -481,7 +519,7 @@ export const posts: IPostList = [
         title: 'Recuperação da Cirurgia de Catarata em Ribeirão Preto: Cuidados e Retorno à Rotina',
         description: 'Vai operar a catarata? Descubra como é o pós-operatório, os cuidados essenciais com o clima seco de Ribeirão Preto, e quando poderá voltar a conduzir e trabalhar com total segurança.',
         slug:'recuperacao-cirurgia-de-catarata-ribeirao-preto-cuidados',
-        imageUrl: 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', // Inserir URL da imagem aqui
+        imageUrl: EXTERNAL_IMG_URL + 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', // Inserir URL da imagem aqui
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Uma das maiores vantagens de realizar a sua <strong>cirurgia de catarata em Ribeirão Preto</strong>, junto à equipa da Clinica Sempre Visão, é o conforto de fazer o repouso na sua própria casa, sem os desgastes e riscos de viajar para a capital.</p>
@@ -559,7 +597,7 @@ export const posts: IPostList = [
         title: 'Onde Fazer Cirurgia de Catarata em Ribeirão Preto? O Guia Completo do Paciente',
         description: 'Vai operar a catarata e não sabe qual clínica escolher em Ribeirão Preto? Descubra o que avaliar, desde a infraestrutura e equipamentos até a especialização do cirurgião, para garantir a segurança da sua visão.',
         slug:'onde-fazer-cirurgia-de-catarata-em-ribeirao-preto-guia',
-        imageUrl: 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', 
+        imageUrl: EXTERNAL_IMG_URL + 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG', 
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Ao receber o diagnóstico de que o cristalino está opaco, é natural que a primeira ação seja procurar no Google por <strong>"onde fazer cirurgia de catarata em Ribeirão Preto"</strong>. Diante de tantas opções, como ter a certeza de estar a entregar os seus olhos nas mãos certas?</p>
@@ -633,7 +671,7 @@ export const posts: IPostList = [
         title: 'Cirurgia de Catarata em Ribeirão Preto: Referência em Tecnologia e Segurança para a Sua Visão',
         description: 'Procura por cirurgia de catarata em Ribeirão Preto? Conheça a Clinica Sempre Visão. Especialistas em facoemulsificação, implante de lentes premium e recuperação rápida. Agende a sua avaliação com a nossa equipa.',
         slug:'cirurgia-de-catarata-em-ribeirao-preto-clinica-especializada',
-        imageUrl: 'como-saber-a-hora-certa-de-operar-a-catarata.JPG', // Inserir URL da imagem aqui
+        imageUrl: EXTERNAL_IMG_URL + 'como-saber-a-hora-certa-de-operar-a-catarata.JPG', // Inserir URL da imagem aqui
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Quando a visão começa a ficar embaçada, as cores perdem a sua vivacidade e a sensibilidade à luz aumenta, é hora de acender o sinal de alerta. Se você foi diagnosticado com esta condição e procura pela melhor <strong>cirurgia de catarata em Ribeirão Preto</strong>, o primeiro passo é encontrar um centro de excelência que lhe transmita total segurança.</p>
@@ -707,7 +745,7 @@ export const posts: IPostList = [
         title: 'Blefaroplastia: Quando a Cirurgia de Pálpebras Deixa de Ser Estética e Passa a Ser Saúde',
         description: 'Pálpebras caídas, olhar cansado ou bolsas sob os olhos? Descubra como a blefaroplastia rejuvenesce a face e, ao mesmo tempo, melhora o seu campo visual, aliviando o peso sobre os olhos na Clinica Sempre Visão.',
         slug:'blefaroplastia-cirurgia-de-palpebras-caidas-bolsas-olhos',
-        imageUrl: 'blefaroplastia-cirurgia-de-palpebras-caidas-bolsas-olhos.webp',
+        imageUrl: EXTERNAL_IMG_URL + 'blefaroplastia-cirurgia-de-palpebras-caidas-bolsas-olhos.webp',
         content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Você costuma ouvir das pessoas que parece "cansado(a)" ou "triste", mesmo após uma excelente noite de sono? O excesso de pele e as bolsas de gordura ao redor dos olhos são os principais responsáveis por essa aparência envelhecida.</p>
@@ -787,7 +825,7 @@ export const posts: IPostList = [
     description:
       'O seu filho aperta os olhos para ver TV ou aproxima muito o rosto do celular? Vivemos uma epidemia de Miopia Infantil. Descubra como a Clinica Sempre Visão utiliza tratamentos modernos para frear o aumento do grau e proteger a visão das crianças.',
     slug: 'miopia-infantil-sintomas-telas-controle-de-grau',
-    imageUrl: 'miopia-infantil-sintomas-telas-controle-de-grau.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'miopia-infantil-sintomas-telas-controle-de-grau.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Se você é pai ou mãe, provavelmente já se fez esta pergunta: <em>"Será que o uso constante de tablets e celulares está a prejudicar a visão do meu filho?"</em>. A ciência oftalmológica moderna responde: <strong>Sim, está.</strong></p>
@@ -872,7 +910,7 @@ export const posts: IPostList = [
     description:
       'Dificuldade para ler mensagens no telemóvel, bulas ou o cardápio do restaurante? A vista cansada (presbiopia) chega para todos após os 40 anos. Descubra as causas e como a Clinica Sempre Visão pode devolver a sua visão de perto.',
     slug: 'presbiopia-vista-cansada-sintomas-tratamentos-cirurgia',
-    imageUrl: 'presbiopia-vista-cansada-sintomas-tratamentos-cirurgia.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'presbiopia-vista-cansada-sintomas-tratamentos-cirurgia.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Você passou a vida toda a enxergar perfeitamente, mas de repente, após o seu 40º aniversário, as letras miúdas do celular começaram a embaralhar. A sua primeira reação instintiva é esticar o braço para afastar a tela e conseguir ler. Bem-vindo ao clube da <strong>Presbiopia</strong>, popularmente conhecida como "vista cansada".</p>
@@ -962,7 +1000,7 @@ export const posts: IPostList = [
     description:
       'Descubra a importância do Mapeamento de Retina para a saúde dos seus olhos. A Clinica Sempre Visão explica como este exame indolor detecta doenças silenciosas como glaucoma, tumores e rasgos na retina.',
     slug: 'mapeamento-de-retina-exame-fundo-de-olho',
-    imageUrl: 'mapeamento-de-retina-exame-fundo-de-olho.wepb',
+    imageUrl: EXTERNAL_IMG_URL + 'mapeamento-de-retina-exame-fundo-de-olho.wepb',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Muitas pessoas acreditam que o exame de vista serve apenas para descobrir se precisam de óculos. No entanto, a verdadeira saúde ocular é avaliada na parte de trás do olho. É exatamente para isso que serve o <strong>Mapeamento de Retina</strong>.</p>
@@ -1027,7 +1065,7 @@ export const posts: IPostList = [
     description:
       'A DMRI é a principal causa de perda de visão na terceira idade. Entenda a diferença entre a DMRI Seca e Úmida, os sintomas como linhas tortuosas e como as injeções intraoculares podem paralisar a doença na Clinica Sempre Visão.',
     slug: 'degeneracao-macular-dmri-sintomas-injecao-anti-vegf',
-    imageUrl: 'degeneracao-macular-dmri-sintomas-injecao-anti-vegf.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'degeneracao-macular-dmri-sintomas-injecao-anti-vegf.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Imagine tentar ler um livro, mas as letras bem no centro da página estão borradas ou simplesmente desaparecem, enquanto as margens continuam nítidas. Este é o impacto devastador da <strong>Degeneração Macular Relacionada à Idade (DMRI)</strong>.</p>
@@ -1093,7 +1131,7 @@ export const posts: IPostList = [
     description:
       'Ver pontos pretos flutuando ou flashes de luz repentinos exige avaliação urgente. Entenda os sinais de perigo do descolamento de retina, quem corre mais risco e como as cirurgias (Vitrectomia e Laser) podem salvar a visão.',
     slug: 'descolamento-retina-sintomas-moscas-volantes-cirurgia',
-    imageUrl: 'descolamento-retina-sintomas-moscas-volantes-cirurgia.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'descolamento-retina-sintomas-moscas-volantes-cirurgia.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Na oftalmologia, o tempo é precioso. O <strong>Descolamento de Retina</strong> é uma das maiores urgências médicas oculares que existem. Se não for tratado rapidamente, pode resultar em perda permanente da visão em questão de dias.</p>
@@ -1160,8 +1198,7 @@ export const posts: IPostList = [
     description:
       'O estrabismo tem correção em qualquer idade! Entenda os tipos de desvio ocular, como o estrabismo afeta a auto-estima e a visão, e como funciona a cirurgia de alinhamento dos músculos oculares na Clinica Sempre Visão.',
     slug: 'cirurgia-de-estrabismo-correcao-olho-desviado-adulto-crianca',
-    imageUrl:
-      'cirurgia-de-estrabismo-correcao-olho-desviado-adulto-crianca.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'cirurgia-de-estrabismo-correcao-olho-desviado-adulto-crianca.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>O <strong>Estrabismo</strong>, condição onde os olhos não estão alinhados e apontam para direções diferentes, é frequentemente rodeado de mitos. O principal deles é que "só tem jeito se operar em criança". <strong>Isso é falso!</strong></p>
@@ -1227,8 +1264,7 @@ export const posts: IPostList = [
     description:
       'Você sabia que o diabetes pode afetar gravemente sua visão? A Retinopatia Diabética é uma complicação silenciosa que exige atenção. Saiba como o controle da glicemia e exames de fundo de olho podem salvar sua visão.',
     slug: 'retinopatia-diabetica-sintomas-tratamento-laser-injecao',
-    imageUrl:
-      'Paciente monitorizando a glicemia com óculos ao fundo, ilustrando a relação entre diabetes e saúde ocular.webp', // Inserir URL da imagem aqui
+    imageUrl: EXTERNAL_IMG_URL + 'Paciente monitorizando a glicemia com óculos ao fundo, ilustrando a relação entre diabetes e saúde ocular.webp', // Inserir URL da imagem aqui
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>O diabetes é uma doença sistémica que afeta todo o corpo, mas os olhos são um dos órgãos mais sensíveis às flutuações de açúcar no sangue. A <strong>Retinopatia Diabética</strong> é a principal causa de cegueira entre adultos em idade ativa.</p>
@@ -1306,8 +1342,7 @@ export const posts: IPostList = [
     description:
       'Seus olhos estão sempre vermelhos e com uma "pele" crescendo em direção à córnea? Pode ser Pterígio. Entenda as causas (sol e vento), por que não se deve usar colírios clareadores e como funciona a cirurgia moderna com transplante conjuntival.',
     slug: 'pterigio-carne-nos-olhos-cirurgia-recuperacao',
-    imageUrl:
-      'Oftalmologista a realizar exame de fundo de olho para detetar retinopatia diabética.webp', // Inserir URL da imagem aqui
+    imageUrl: EXTERNAL_IMG_URL + 'Oftalmologista a realizar exame de fundo de olho para detetar retinopatia diabética.webp', // Inserir URL da imagem aqui
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>O <strong>Pterígio</strong>, popularmente conhecido como "carne nos olhos" ou "carne crescida", é mais do que um problema estético. É uma lesão que causa desconforto constante, vermelhidão e, em casos avançados, pode até distorcer a visão cobrindo a pupila.</p>
@@ -1378,8 +1413,7 @@ export const posts: IPostList = [
     description:
       'Monofocal, Trifocal ou Tórica? Entenda as diferenças entre as lentes intraoculares (LIOs) para cirurgia de catarata e descubra qual oferece a melhor visão para o seu estilo de vida. Um comparativo completo da Clinica Sempre Visão.',
     slug: 'qual-melhor-lente-catarata-monofocal-trifocal-torica',
-    imageUrl:
-      'Oftalmologista comparando tipos de lentes intraoculares (monofocal e multifocal) para paciente de cirurgia de catarata.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Oftalmologista comparando tipos de lentes intraoculares (monofocal e multifocal) para paciente de cirurgia de catarata.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>A cirurgia de catarata não é apenas sobre remover a visão embaçada; é uma oportunidade única de <strong>recuperar a independência dos óculos</strong>. A grande estrela dessa transformação é a <strong>Lente Intraocular (LIO)</strong>, o implante que substitui o cristalino envelhecido.</p>
@@ -1473,8 +1507,7 @@ export const posts: IPostList = [
     description:
       'Seu grau de astigmatismo muda todo ano? Você tem o hábito frequente de coçar os olhos? Cuidado, pode ser Ceratocone. Entenda o que é essa doença, seus riscos e conheça os tratamentos modernos como Crosslinking e Anel de Ferrara.',
     slug: 'ceratocone-sintomas-cocar-olhos-tratamentos-crosslinking',
-    imageUrl:
-      'Jovem esfregando os olhos com força, principal fator de risco para o desenvolvimento e agravamento do ceratocone.webp', // Inserir URL da imagem aqui
+    imageUrl: EXTERNAL_IMG_URL + 'Jovem esfregando os olhos com força, principal fator de risco para o desenvolvimento e agravamento do ceratocone.webp', // Inserir URL da imagem aqui
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Parece um hábito inofensivo: sentir uma coceira e esfregar os olhos com força para aliviar. Porém, esse gesto repetitivo pode ser o gatilho para uma doença grave e progressiva chamada <strong>Ceratocone</strong>.</p>
@@ -1563,8 +1596,7 @@ export const posts: IPostList = [
     description:
       'Sensação de areia, ardor e visão embaçada ao fim do dia? Você pode ter Síndrome do Olho Seco. Descubra como o uso de telas e o ar condicionado afetam sua visão e conheça os tratamentos modernos na Clinica Sempre Visão.',
     slug: 'sindrome-olho-seco-ardor-areia-tratamento',
-    imageUrl:
-      'Pessoa esfregando os olhos cansados em frente ao computador, sintoma de síndrome do olho seco.webp', // Inserir URL da imagem aqui
+    imageUrl: EXTERNAL_IMG_URL + 'Pessoa esfregando os olhos cansados em frente ao computador, sintoma de síndrome do olho seco.webp', // Inserir URL da imagem aqui
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Você já sentiu como se tivesse um grão de areia dentro dos olhos, mesmo não havendo nada lá? Ou percebe que, ao final de um dia de trabalho no computador, sua visão fica embaçada e seus olhos vermelhos? Esses são os sinais clássicos da <strong>Síndrome do Olho Seco</strong>.</p>
@@ -1662,8 +1694,7 @@ export const posts: IPostList = [
     description:
       'O glaucoma é a principal causa de cegueira irreversível no mundo. Saiba por que ele não apresenta sintomas iniciais, quem faz parte do grupo de risco e como o exame de pressão ocular pode salvar sua visão. Um guia completo da Clinica Sempre Visão.',
     slug: 'glaucoma-sintomas-tratamento-prevencao-cegueira',
-    imageUrl:
-      'Paciente realizando exame de medição de pressão ocular (tonometria) para prevenção do glaucoma.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Paciente realizando exame de medição de pressão ocular (tonometria) para prevenção do glaucoma.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Você sabia que é possível perder a visão lentamente sem sentir dor ou perceber qualquer mudança imediata? Este é o perigo do <strong>Glaucoma</strong>, conhecido mundialmente como o "ladrão silencioso da visão".</p>
@@ -1760,8 +1791,7 @@ export const posts: IPostList = [
     description:
       'Colírio cura catarata? É preciso esperar "amadurecer"? A doença volta? A Clinica Sempre Visão desvenda os 7 maiores mitos sobre a cirurgia de catarata para que você possa cuidar da sua visão com segurança e informação correta.',
     slug: 'mitos-e-verdades-sobre-catarata',
-    imageUrl:
-      'Médico oftalmologista da Clinica Sempre Visão explicando verdades sobre a catarata para paciente idosa.webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Médico oftalmologista da Clinica Sempre Visão explicando verdades sobre a catarata para paciente idosa.webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Quando o assunto é a saúde dos nossos olhos, a sabedoria popular nem sempre está correta. A <strong>catarata</strong>, sendo a cirurgia mais realizada na oftalmologia mundial, é cercada de muitas informações desencontradas que podem gerar medo ou atrasar o diagnóstico.</p>
@@ -1849,8 +1879,7 @@ export const posts: IPostList = [
     description:
       'Sonha em viver sem óculos ou lentes de contato? Descubra tudo sobre a Cirurgia Refrativa a Laser. A Clinica Sempre Visão explica as diferenças entre LASIK e PRK, quem pode fazer a cirurgia, como é a recuperação e os benefícios de corrigir miopia, astigmatismo e hipermetropia.',
     slug: 'cirurgia-refrativa-laser-lasik-prk-adeus-oculos',
-    imageUrl:
-      'Mulher sorrindo segurando óculos de grau em consultório, decidindo pela cirurgia refrativa..webp',
+    imageUrl: EXTERNAL_IMG_URL + 'Mulher sorrindo segurando óculos de grau em consultório, decidindo pela cirurgia refrativa..webp',
     content: `
                 <section id="introducao" class="w-full text-lg text-slate-700 leading-relaxed space-y-4 mb-6">
                     <p>Imagine acordar de manhã e enxergar o relógio nitidamente sem precisar tatear a mesa de cabeceira em busca dos óculos. Ou praticar esportes e nadar sem a preocupação com lentes de contato. Para milhões de pessoas, essa liberdade é conquistada através da <strong class="font-semibold text-slate-800">Cirurgia Refrativa a Laser</strong>.</p>
@@ -1966,8 +1995,7 @@ export const posts: IPostList = [
     description:
       'Um guia completo da Clinica Sempre Visão sobre a catarata, a principal causa de cegueira reversível. Entenda o que é, os sintomas de alerta (como visão embaçada) e descubra qual o momento certo de optar pela cirurgia para restaurar sua visão.',
     slug: 'catarata-o-que-e-sintomas-quando-operar',
-    imageUrl:
-      'Oftalmologista da Clinica Sempre Visão explicando o diagnóstico de catarata para um paciente idoso em consultório.png',
+    imageUrl: EXTERNAL_IMG_URL + 'Oftalmologista da Clinica Sempre Visão explicando o diagnóstico de catarata para um paciente idoso em consultório.png',
     content: `
                 <section id="o-que-e" class="space-y-6">
                     <p>A <strong class="font-semibold text-slate-800">catarata</strong> é uma das principais causas de perda de visão no mundo, mas felizmente, é <strong class="font-semibold text-slate-800">totalmente reversível</strong> com o tratamento adequado. Ela ocorre quando o <strong class="font-semibold text-slate-800">cristalino</strong>, a lente natural do nosso olho, perde sua transparência e se torna opaco. Esse processo impede que a luz chegue com clareza à retina, tornando a visão progressivamente embaçada ou "nublada".</p>
@@ -2058,8 +2086,7 @@ export const posts: IPostList = [
     description:
       'Prepare-se para a cirurgia de catarata. A Clinica Sempre Visão explica em detalhes como funciona o procedimento moderno (facoemulsificação), os tipos de lentes intraoculares (LIOs) para corrigir grau (multifocais, tóricas) e o guia passo a passo da recuperação pós-operatória.',
     slug: 'cirurgia-de-catarata-procedimento-lentes-intraoculares-recuperacao',
-    imageUrl:
-      'Cirurgião oftalmologista realizando cirurgia de catarata com equipamento moderno de facoemulsificação.png',
+    imageUrl: EXTERNAL_IMG_URL + 'Cirurgião oftalmologista realizando cirurgia de catarata com equipamento moderno de facoemulsificação.png',
     content: `
                 <section id="introducao" class="space-y-6">
                     <p>A <strong class="font-semibold text-slate-800">cirurgia de catarata</strong> é um dos procedimentos mais seguros e eficazes da medicina moderna. Ela consiste na remoção do cristalino opaco e sua substituição por uma lente intraocular (LIO) artificial e transparente, restaurando a nitidez da visão. Graças aos avanços tecnológicos, a cirurgia é rápida, indolor e de recuperação acelerada.</p>
@@ -2157,7 +2184,7 @@ export const posts: IPostList = [
     title:
       'Coquetel de inauguração da Sempre Visão em Franca celebra nova fase da clínica com convidados especiais',
     slug: 'coquetel-de-inauguracao-da-sempre-visao-em-franca-celebra-nova-fase-da-clinica-com-convidados-especiais',
-    imageUrl: 'coquetel-inauguracao-sempre-visao-em-franca-capa.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-capa.JPG',
     description:
       'No dia 16 de outubro, a Sempre Visão realizou um coquetel de inauguração que reuniu convidados especiais, parceiros, amigos e personalidades da região. O evento marcou a abertura oficial da nova unidade em Franca e celebrou uma nova etapa na trajetória de excelência da clínica.',
     content: `
@@ -2175,27 +2202,27 @@ export const posts: IPostList = [
 
     `,
     galleryImages: [
-      'coquetel-inauguracao-sempre-visao-em-franca-001.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-002.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-003.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-004.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-005.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-006.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-007.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-008.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-009.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-010.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-011.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-012.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-013.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-014.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-015.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-016.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-017.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-018.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-019.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-020.JPG',
-      'coquetel-inauguracao-sempre-visao-em-franca-021.JPG'
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-001.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-002.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-003.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-004.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-005.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-006.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-007.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-008.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-009.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-010.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-011.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-012.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-013.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-014.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-015.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-016.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-017.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-018.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-019.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-020.JPG',
+      EXTERNAL_IMG_URL + 'coquetel-inauguracao-sempre-visao-em-franca-021.JPG'
     ]
   },
   {
@@ -2203,8 +2230,7 @@ export const posts: IPostList = [
     slug: 'sempre-visao-chega-a-franca-com-tecnologia-e-cuidado-humanizado',
     description:
       'No dia 13 de outubro, a cidade de Franca ganhou uma nova referência em saúde ocular: a Sempre Visão, clínica oftalmológica do Grupo Sempre, abriu oficialmente suas portas e já está atendendo pacientes na Rua General Telles, 1259, ao lado da Sempre Sorrindo. A nova unidade chega para oferecer à população o que há de mais moderno em cuidados com a visão, combinando tecnologia de ponta, atendimento humanizado e uma equipe altamente especializada.',
-    imageUrl:
-      'sempre-visao-chega-a-franca-com-tecnologia-e-cuidado-humanizado.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'sempre-visao-chega-a-franca-com-tecnologia-e-cuidado-humanizado.JPG',
     content: `
         <h2>Sempre Visão chega a Franca com tecnologia e cuidado humanizado</h2>
 
@@ -2241,8 +2267,7 @@ export const posts: IPostList = [
     title:
       'Sempre Visão realiza dezenas de cirurgias de catarata no primeiro mês de funcionamento — sem filas e com excelência',
     slug: 'sempre-visao-realiza-dezenas-de-cirurgias-de-catarata-no-primeiro-mes-de-funcionamento-sem-filas-e-com-excelencia',
-    imageUrl:
-      'sempre-visao-realiza-dezenas-de-cirurgias-de-catarata-no-primeiro-mes-de-funcionamento.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'sempre-visao-realiza-dezenas-de-cirurgias-de-catarata-no-primeiro-mes-de-funcionamento.JPG',
     description: `A clínica oftalmológica Sempre Visão, inaugurada há apenas um mês, já comemora um marco importante: dezenas de cirurgias de catarata foram realizadas com sucesso e, o melhor, sem filas de espera. A unidade, que já se destaca entre as principais referências em oftalmologia da região, tem como missão restaurar a visão e transformar vidas.
     Idealizada pelos oftalmologistas Dr. Raphael Brigagão e Dr. Breno Reis, a Sempre Visão nasceu com um propósito claro: oferecer atendimento humanizado, rápido e de qualidade, especialmente para quem enfrenta problemas como a catarata, uma das principais causas de cegueira reversível no mundo.
     “O nosso propósito é realizar o sonho de pessoas que têm dificuldade para enxergar e ajudá-las a terem suas visões restauradas”, explica Dr. Raphael.
@@ -2289,8 +2314,7 @@ export const posts: IPostList = [
   {
     title: 'Por que escolher a Sempre Visão para a sua cirurgia de catarata?',
     slug: 'por-que-escolher-a-sempre-visao-para-a-sua-cirurgia-de-catarata',
-    imageUrl:
-      'por-que-escolher-a-sempre-visao-para-a-sua-cirurgia-de-catarata.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'por-que-escolher-a-sempre-visao-para-a-sua-cirurgia-de-catarata.JPG',
     description:
       'A cirurgia de catarata é um dos procedimentos oftalmológicos mais seguros e eficazes para recuperar a visão. Na Sempre Visão, você encontra tecnologia de ponta, equipe médica especializada e um atendimento humanizado. Confira os diferenciais que tornam a Sempre Visão a melhor escolha para sua cirurgia de catarata.',
     content: `
@@ -2358,7 +2382,7 @@ export const posts: IPostList = [
     title:
       'Como saber a hora certa de operar a catarata? Especialistas da Sempre Visão explicam',
     slug: 'como-saber-a-hora-certa-de-operar-a-catarata-especialistas-da-sempre-visao-explicam',
-    imageUrl: 'como-saber-a-hora-certa-de-operar-a-catarata.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'como-saber-a-hora-certa-de-operar-a-catarata.JPG',
     description:
       'A catarata é uma condição oftalmológica muito comum, especialmente após os 60 anos, e pode causar sérios prejuízos à qualidade de vida se não for tratada corretamente. Mas afinal, qual é o momento ideal para operar a catarata? A equipe médica da Sempre Visão responde essa e outras dúvidas frequentes sobre o assunto.',
     content: `
@@ -2419,8 +2443,7 @@ export const posts: IPostList = [
     title:
       'Diagnóstico precoce da catarata é essencial para preservar a visão, alerta equipe da Sempre Visão',
     slug: 'diagnostico-precoce-da-catarata-e-essencial-para-preservar-a-visao-alerta-equipe-da-sempre-visao',
-    imageUrl:
-      'diagnostico-precoce-da-catarata-e-essencial-para-preservar-a-visao.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'diagnostico-precoce-da-catarata-e-essencial-para-preservar-a-visao.JPG',
     description:
       'A catarata é uma condição oftalmológica silenciosa e progressiva, que pode levar à perda parcial ou total da visão se não for tratada a tempo. Por isso, os especialistas da Sempre Visão, clínica referência em cirurgia de catarata, alertam: o diagnóstico precoce é fundamental para garantir a eficácia do tratamento e preservar a qualidade de vida do paciente.',
     content: `
@@ -2469,8 +2492,7 @@ export const posts: IPostList = [
     title:
       'Cirurgia de catarata: descubra como funciona, quando fazer e onde realizar com segurança',
     slug: 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca',
-    imageUrl:
-      'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG',
+    imageUrl: EXTERNAL_IMG_URL + 'cirurgia-de-catarata-descubra-como-funciona-quando-fazer-e-onde-realizar-com-seguranca.JPG',
     description:
       'A cirurgia de catarata é um dos procedimentos mais realizados no Brasil e no mundo. Com o avanço da medicina oftalmológica, a cirurgia se tornou rápida, segura e extremamente eficaz para quem deseja recuperar a nitidez da visão e voltar a ter qualidade de vida.',
     content: `

@@ -4,14 +4,17 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const { 
   title = "Sempre visão", 
-  description = "Cirurgia de catarata sem fila e com segurança, consultas de vista e exames especializados é na Sempre Visão."
+  description = "Cirurgia de catarata sem fila e com segurança, consultas de vista e exames especializados é na Sempre Visão.",
+  image = "/logo.png"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://semprevisao.com.br');
+const absoluteImageUrl = new URL(image, Astro.site || 'https://semprevisao.com.br').toString();
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -27,6 +30,20 @@ import Footer from '../components/Footer.astro';
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={absoluteImageUrl} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={absoluteImageUrl} />
     
     <meta name="google-site-verification" content="VTCDLrxfHd7UDE9EICTOnJ1b0PReZW97GkWpvdm7sgc" />
     

@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { posts } from '../../data/posts';
 import Carousel from '../../components/ui/Carousel.astro';
 import type { IPost } from '../../data/post.interface';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   return posts.map((post) => ({
@@ -21,23 +22,48 @@ function getRelatedPosts(currentSlug: string) {
 
 const relatedPosts = getRelatedPosts(post.slug);
 const defaultImage = "/images/placeholder.svg";
+const resolvedImage = typeof post.imageUrl === 'string' ? post.imageUrl : defaultImage;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": post.title,
+  "description": post.description,
+  "image": resolvedImage,
+  "author": {
+    "@type": "Organization",
+    "name": "Sempre Visão"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Sempre Visão",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://semprevisao.com.br/logo.png"
+    }
+  }
+};
 ---
 
-<Layout title={`${post.title} | Blog Sempre Visão`} description={post.description}>
+<Layout title={`${post.title} | Sempre Visão`} description={post.description} image={resolvedImage}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <section id="PostPage" class="w-full max-w-[1200px] mx-auto px-3 md:px-[52px] pb-[72px] text-secondary">
     
     <!-- Top Image banner -->
-    <figure class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden mt-4 shadow-sm">
-      <img
-        src={
-          post.imageUrl
-            ? `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${post.imageUrl}`
-            : defaultImage
-        }
-        alt={post.title}
-        class="absolute inset-0 w-full h-full object-cover rounded-xl"
-        loading="eager"
-      />
+    <figure class="relative w-full mb-8">
+      <div class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden shadow-sm">
+        <Image
+          src={resolvedImage as any}
+          alt={post.title}
+          width={1200}
+          height={800}
+          class="absolute inset-0 w-full h-full object-cover rounded-xl"
+          loading="eager"
+        />
+      </div>
+      <figcaption class="mt-3 text-sm text-gray-500 text-center italic">
+        {post.title} – Imagem meramente ilustrativa.
+      </figcaption>
     </figure>
 
     <h1 class="text-[24px] lg:text-[48px] font-bold text-primary mt-6 mb-4 text-start lg:text-center leading-tight">
@@ -58,9 +84,11 @@ const defaultImage = "/images/placeholder.svg";
             return (
               <div class="embla__slide shrink-0 basis-full md:basis-1/2 px-2">
                 <figure class="relative rounded-2xl overflow-hidden h-[300px] shadow-md border border-gray-100">
-                  <img
-                    src={`https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${imageUrl}`}
+                  <Image
+                    src={imageUrl as any}
                     alt={`${post.title} - Imagem ${index + 1}`}
+                    width={800}
+                    height={600}
                     class="absolute inset-0 w-full h-full object-cover rounded-2xl"
                     loading="lazy"
                   />
@@ -81,13 +109,15 @@ const defaultImage = "/images/placeholder.svg";
             <li class="rounded-[10px] shadow-[0px_0px_10px_rgba(0,0,0,0.15)] pb-[12px] overflow-hidden bg-white hover:shadow-md transition-shadow duration-300">
               <a href={`/blog/${item.slug}`} class="flex flex-col gap-2 h-full justify-between">
                 <figure class="relative h-[200px] w-full shrink-0">
-                  <img
+                  <Image
                     src={
-                      item.imageUrl
-                        ? `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${item.imageUrl}`
-                        : defaultImage
+                      (item.imageUrl
+                        ? item.imageUrl
+                        : defaultImage) as any
                     }
                     alt={item.title}
+                    width={400}
+                    height={300}
                     class="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />

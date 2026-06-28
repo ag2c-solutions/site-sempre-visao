@@ -6,6 +6,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://semprevisao.com.br',
   integrations: [sitemap()],
+  image: {
+    domains: ['backup.clinicassempresorrindo.com.br'],
+  },
   vite: {
     plugins: [tailwindcss()]
   }

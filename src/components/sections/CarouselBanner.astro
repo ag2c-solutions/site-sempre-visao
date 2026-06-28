@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Banner images in the same order as the original: image3, image1, image2
 const images = [
   { src: '/Banner-Site-Sempre-Visão_03Prancheta-1.png', alt: 'Banner Sempre Visão 3' },
@@ -10,13 +11,13 @@ const images = [
 <div id="CarouselBanner" class="banner-carousel">
   <figure class="banner-figure">
     {images.map((img, index) => (
-      <img
+      <Image
         src={img.src}
         alt={img.alt}
         class={`banner-img${index === 0 ? ' current' : ''}`}
         data-index={index}
-        width="1200"
-        height="600"
+        width={1200}
+        height={600}
         loading={index === 0 ? 'eager' : 'lazy'}
       />
     ))}

@@ -1,6 +1,7 @@
 ---
 import { posts } from '../../data/posts';
 import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
 
 const highlightedPost = posts[0]; // Assuming the first post is the highlighted one
 const smallPosts = posts.slice(1, 5); // Get the next 4 posts
@@ -9,7 +10,7 @@ const defaultImage = "/placeholder.svg";
 function getImageSrc(imageUrl: string | ImageMetadata): string {
   if (!imageUrl) return defaultImage;
   if (typeof imageUrl === 'string') {
-    return `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${imageUrl}`;
+    return imageUrl;
   }
   // ImageMetadata object from local import
   return imageUrl.src;
@@ -25,9 +26,11 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
     <!-- Highlighted Left Post -->
     <article class="highlightedPost bg-[#ecebeb] rounded-xl overflow-hidden flex-1 md:max-w-[50%] flex flex-col shadow-sm">
       <figure class="w-full relative">
-        <img
+        <Image
           src={getImageSrc(highlightedPost.imageUrl)}
           alt={highlightedPost.title}
+          width={600}
+          height={420}
           class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
           loading="lazy"
         />
@@ -57,9 +60,11 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
           <li class="h-full">
             <article class="smallPost bg-[#ecebeb] rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow transition-shadow duration-300">
               <figure class="w-full relative">
-                <img
+                <Image
                   src={getImageSrc(post.imageUrl)}
                   alt={post.title}
+                  width={400}
+                  height={280}
                   class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
                   loading="lazy"
                 />

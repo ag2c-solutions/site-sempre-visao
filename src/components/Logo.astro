@@ -1,13 +1,15 @@
 ---
+import { Image } from 'astro:assets';
 ---
 <figure class="w-[150px] h-[150px] relative flex items-center justify-center shrink-0">
   <a href="/">
-    <img
+    <Image
       src="/logo.png"
-      alt="logo sempre visão: á esquerda o desenho de um olho com linhas amarelas e azuis, á direita Sempre Visão."
-      width="150"
-      height="150"
+      alt="Logo Clínica Oftalmológica Sempre Visão"
+      width={150}
+      height={150}
       class="object-contain w-full h-full"
+      loading="eager"
     />
   </a>
 </figure>

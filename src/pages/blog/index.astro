@@ -2,13 +2,17 @@
 import Layout from '../../layouts/Layout.astro';
 import { posts } from '../../data/posts';
 import type { IPost } from '../../data/post.interface';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 
 const defaultImage = "/images/placeholder.svg";
 
-function getImageUrl(imageUrl: string | undefined) {
-  return imageUrl
-    ? `https://backup.clinicassempresorrindo.com.br/storage/app/uploads/${imageUrl}`
-    : defaultImage;
+function getImageUrl(imageUrl: string | ImageMetadata | undefined) {
+  if (!imageUrl) return defaultImage;
+  if (typeof imageUrl === 'string') {
+    return imageUrl;
+  }
+  return imageUrl.src;
 }
 
 function getSortedPosts(allPosts: IPost[]) {
@@ -43,10 +47,13 @@ const gridPosts = sortedPosts.slice(6); // The rest of the posts
       <section class="mb-16">
         <a href={`/blog/${heroPost.slug}`} class="block group rounded-3xl overflow-hidden shadow-2xl border border-blue-100 bg-white hover:shadow-blue-200 transition-all duration-200">
           <div class="relative w-full aspect-[2/1] bg-gradient-to-tr from-blue-100 to-slate-200">
-            <img
+            <Image
               src={getImageUrl(heroPost.imageUrl)}
               alt={heroPost.title}
+              width={1200}
+              height={600}
               class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+              loading="eager"
             />
             {heroPost.date && (
               <span class="absolute top-4 left-4 bg-white/80 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">
@@ -77,10 +84,13 @@ const gridPosts = sortedPosts.slice(6); // The rest of the posts
         {mostReadPosts.map(post => (
           <article class="group bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl border border-blue-100 shadow flex flex-col overflow-hidden transition-all duration-200 hover:scale-[1.02] hover:shadow-xl hover:border-blue-300">
             <a href={`/blog/${post.slug}`} class="block w-full aspect-[16/9] bg-gradient-to-tr from-blue-100 to-slate-200 relative overflow-hidden">
-              <img
+              <Image
                 src={getImageUrl(post.imageUrl)}
                 alt={post.title}
+                width={800}
+                height={450}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
               />
             </a>
             <div class="p-5 flex flex-col flex-1 gap-2">
@@ -110,10 +120,13 @@ const gridPosts = sortedPosts.slice(6); // The rest of the posts
           {gridPosts.map(post => (
             <article class="group bg-white rounded-2xl border border-slate-200 shadow-lg flex flex-col overflow-hidden transition-all duration-200 hover:scale-[1.025] hover:shadow-2xl hover:border-blue-200">
               <a href={`/blog/${post.slug}`} class="block w-full aspect-[16/9] bg-gradient-to-tr from-blue-100 to-slate-200 relative overflow-hidden">
-                <img
+                <Image
                   src={getImageUrl(post.imageUrl)}
                   alt={post.title}
+                  width={800}
+                  height={450}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
                 {post.date && (
                   <span class="absolute top-3 left-3 bg-white/80 text-slate-700 text-xs font-semibold px-3 py-1 rounded-full shadow-sm backdrop-blur-sm">

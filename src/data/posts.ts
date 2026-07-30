@@ -58,7 +58,7 @@ export const posts: IPostList = [
                         Agendar Avaliação para Remoção de Pterígio
                     </a>
                 </section>
-        \`
+        `
     },
     {
         title: 'Retinopatia Diabética: O Impacto do Diabetes na Sua Visão',

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/typography": "^0.5.20",
     "astro": "^5.0.6",
     "clsx": "^2.1.1",
     "embla-carousel": "^8.6.0",

@@ -1,10 +1,11 @@
 ---
-import { posts } from '../../data/posts';
+import { getPublishedPosts } from '../../utils/posts';
 import type { ImageMetadata } from 'astro';
 import { Image } from 'astro:assets';
 
-const highlightedPost = posts[0]; // Assuming the first post is the highlighted one
-const smallPosts = posts.slice(1, 5); // Get the next 4 posts
+const publishedPosts = await getPublishedPosts();
+const highlightedPost = publishedPosts[0]; // Assuming the first post is the highlighted one
+const smallPosts = publishedPosts.slice(1, 5); // Get the next 4 posts
 const defaultImage = "/placeholder.svg";
 
 function getImageSrc(imageUrl: string | ImageMetadata): string {
@@ -27,8 +28,8 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
     <article class="highlightedPost bg-[#ecebeb] rounded-xl overflow-hidden flex-1 md:max-w-[50%] flex flex-col shadow-sm">
       <figure class="w-full relative">
         <Image
-          src={getImageSrc(highlightedPost.imageUrl)}
-          alt={highlightedPost.title}
+          src={getImageSrc(highlightedPost.data.imageUrl)}
+          alt={highlightedPost.data.title}
           width={600}
           height={420}
           class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
@@ -37,15 +38,15 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
       </figure>
       <div class="postContent p-4 flex flex-col flex-grow gap-2">
         <h3 class="postTitle text-[20px] md:text-[22px] font-semibold text-primary mb-1 leading-snug">
-          {highlightedPost.title}
+          {highlightedPost.data.title}
         </h3>
         <p class="postExcerpt text-[13px] md:text-[14px] text-gray-600 line-clamp-3 md:line-clamp-[12] leading-relaxed">
-          {highlightedPost.description}
+          {highlightedPost.data.description}
         </p>
       </div>
       <div class="action p-4 mt-auto">
         <a
-          href={`/blog/${highlightedPost.slug}`}
+          href={`/blog/${highlightedPost.data.slug}`}
           class="readMoreButton w-full block p-3 bg-tertiary border border-gray-200 rounded-[6px] text-primary text-[14px] font-bold text-center hover:bg-secondary hover:text-tertiary transition-all duration-300 shadow-sm"
         >
           Continuar lendo
@@ -61,8 +62,8 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
             <article class="smallPost bg-[#ecebeb] rounded-xl overflow-hidden flex flex-col h-full shadow-sm hover:shadow transition-shadow duration-300">
               <figure class="w-full relative">
                 <Image
-                  src={getImageSrc(post.imageUrl)}
-                  alt={post.title}
+                  src={getImageSrc(post.data.imageUrl)}
+                  alt={post.data.title}
                   width={400}
                   height={280}
                   class="w-full aspect-[1/0.7] object-cover bg-[#e6f7ff]"
@@ -71,15 +72,15 @@ function getImageSrc(imageUrl: string | ImageMetadata): string {
               </figure>
               <div class="postContent p-3 flex flex-col flex-grow gap-1">
                 <h3 class="postTitle text-[16px] font-semibold text-primary mb-1 leading-tight line-clamp-2">
-                  {post.title}
+                  {post.data.title}
                 </h3>
                 <p class="postExcerpt text-[12px] text-gray-600 line-clamp-3 leading-relaxed">
-                  {post.description}
+                  {post.data.description}
                 </p>
               </div>
               <div class="action p-3 mt-auto">
                 <a
-                  href={`/blog/${post.slug}`}
+                  href={`/blog/${post.data.slug}`}
                   class="readMoreButton w-full block p-2 bg-tertiary border border-gray-200 rounded-[6px] text-primary text-[12px] font-bold text-center hover:bg-secondary hover:text-tertiary transition-all duration-300 shadow-sm"
                 >
                   Continuar lendo

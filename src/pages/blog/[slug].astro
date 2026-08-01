@@ -1,34 +1,37 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { posts } from '../../data/posts';
+import { getPublishedPosts } from '../../utils/posts';
 import Carousel from '../../components/ui/Carousel.astro';
-import type { IPost } from '../../data/post.interface';
 import { Image } from 'astro:assets';
+import { render, getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  return posts.map((post) => ({
-    params: { slug: post.slug },
+  const allPosts = await getCollection('blog');
+  return allPosts.map((post) => ({
+    params: { slug: post.data.slug },
     props: { post }
   }));
 }
 
 const { post } = Astro.props;
+const { Content } = await render(post);
 
 // Filter 4 other posts to show at the bottom
-function getRelatedPosts(currentSlug: string) {
-  const filtered = posts.filter((p) => p.slug !== currentSlug);
+function getRelatedPosts(currentSlug: string, allPosts: any[]) {
+  const filtered = allPosts.filter((p) => p.data.slug !== currentSlug);
   return filtered.slice(0, 4);
 }
 
-const relatedPosts = getRelatedPosts(post.slug);
+const publishedPosts = await getPublishedPosts();
+const relatedPosts = getRelatedPosts(post.data.slug, publishedPosts);
 const defaultImage = "/images/placeholder.svg";
-const resolvedImage = typeof post.imageUrl === 'string' ? post.imageUrl : defaultImage;
+const resolvedImage = typeof post.data.imageUrl === 'string' ? post.data.imageUrl : defaultImage;
 
 const schema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": post.title,
-  "description": post.description,
+  "headline": post.data.title,
+  "description": post.data.description,
   "image": resolvedImage,
   "author": {
     "@type": "Organization",
@@ -45,7 +48,7 @@ const schema = {
 };
 ---
 
-<Layout title={`${post.title} | Sempre Visão`} description={post.description} image={resolvedImage}>
+<Layout title={`${post.data.title} | Sempre Visão`} description={post.data.description} image={resolvedImage}>
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   <section id="PostPage" class="w-full max-w-[1200px] mx-auto px-3 md:px-[52px] pb-[72px] text-secondary">
     
@@ -54,7 +57,7 @@ const schema = {
       <div class="relative w-full h-[35vh] lg:h-[calc(100vh-150px)] rounded-[10px] overflow-hidden shadow-sm">
         <Image
           src={resolvedImage as any}
-          alt={post.title}
+          alt={post.data.title}
           width={1200}
           height={800}
           class="absolute inset-0 w-full h-full object-cover rounded-xl"
@@ -62,17 +65,17 @@ const schema = {
         />
       </div>
       <figcaption class="mt-3 text-sm text-gray-500 text-center italic">
-        {post.title} – Imagem meramente ilustrativa.
+        {post.data.title} – Imagem meramente ilustrativa.
       </figcaption>
     </figure>
 
     <h1 class="text-[24px] lg:text-[48px] font-bold text-primary mt-6 mb-4 text-start lg:text-center leading-tight">
-      {post.title}
+      {post.data.title}
     </h1>
 
     <!-- Rich Body Content -->
-    <article class="exam-prose w-full min-h-[400px] py-6 md:py-12 flex flex-col justify-center items-start gap-4">
-      <Fragment set:html={post.content} />
+    <article class="exam-prose prose prose-slate lg:prose-lg max-w-none w-full min-h-[400px] py-6 md:py-12 flex flex-col justify-center items-start gap-4">
+      <Content />
     </article>
 
     <!-- Optional Gallery Images Carousel -->
@@ -80,13 +83,13 @@ const schema = {
       <div class="flex w-full flex-col items-center justify-center my-12">
         <h2 class="text-2xl font-bold text-primary mb-6">Galeria de Fotos</h2>
         <Carousel loop={true} align="start" className="w-full">
-          {post.galleryImages.map((imageUrl, index) => {
+          {post.data.galleryImages.map((imageUrl, index) => {
             return (
               <div class="embla__slide shrink-0 basis-full md:basis-1/2 px-2">
                 <figure class="relative rounded-2xl overflow-hidden h-[300px] shadow-md border border-gray-100">
                   <Image
                     src={imageUrl as any}
-                    alt={`${post.title} - Imagem ${index + 1}`}
+                    alt={`${post.data.title} - Imagem ${index + 1}`}
                     width={800}
                     height={600}
                     class="absolute inset-0 w-full h-full object-cover rounded-2xl"
@@ -107,15 +110,15 @@ const schema = {
         {relatedPosts.map((item) => {
           return (
             <li class="rounded-[10px] shadow-[0px_0px_10px_rgba(0,0,0,0.15)] pb-[12px] overflow-hidden bg-white hover:shadow-md transition-shadow duration-300">
-              <a href={`/blog/${item.slug}`} class="flex flex-col gap-2 h-full justify-between">
+              <a href={`/blog/${item.data.slug}`} class="flex flex-col gap-2 h-full justify-between">
                 <figure class="relative h-[200px] w-full shrink-0">
                   <Image
                     src={
-                      (item.imageUrl
-                        ? item.imageUrl
+                      (item.data.imageUrl
+                        ? item.data.imageUrl
                         : defaultImage) as any
                     }
-                    alt={item.title}
+                    alt={item.data.title}
                     width={400}
                     height={300}
                     class="absolute inset-0 w-full h-full object-cover"
@@ -123,8 +126,8 @@ const schema = {
                   />
                 </figure>
                 <div class="flex flex-col gap-2 p-3 flex-grow">
-                  <h3 class="text-[16px] font-semibold text-primary leading-snug line-clamp-3 min-h-[72px]">{item.title}</h3>
-                  <p class="line-clamp-4 text-[13px] font-normal text-gray-500 leading-relaxed">{item.description}</p>
+                  <h3 class="text-[16px] font-semibold text-primary leading-snug line-clamp-3 min-h-[72px]">{item.data.title}</h3>
+                  <p class="line-clamp-4 text-[13px] font-normal text-gray-500 leading-relaxed">{item.data.description}</p>
                 </div>
               </a>
             </li>

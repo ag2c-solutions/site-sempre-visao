@@ -2,7 +2,7 @@
 title: "Dificuldade na Escola? O Problema Pode Ser a Visão"
 description: "Queda no rendimento escolar, falta de atenção ou dor de cabeça na infância podem ser sinais de problemas de visão. Saiba como identificar e agir a tempo."
 slug: "dificuldade-escolar-rendimento-visao-infantil-sinais"
-imageUrl: "/images/placeholder.svg"
+imageUrl: "/images/blog/visao_infantil_escola_capa.jpg"
 date: "2026-10-12"
 tags: ["Saúde Infantil", "Prevenção", "Educação"]
 ---

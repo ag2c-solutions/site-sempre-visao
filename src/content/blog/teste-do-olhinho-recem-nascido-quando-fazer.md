@@ -2,7 +2,7 @@
 title: "Teste do Olhinho: Quando Fazer e Por Que É Importante"
 description: "Saiba o que é o Teste do Olhinho (reflexo vermelho), quando deve ser feito no recém-nascido e quais doenças graves ele ajuda a detectar precocemente."
 slug: "teste-do-olhinho-recem-nascido-quando-fazer"
-imageUrl: "/images/placeholder.svg"
+imageUrl: "/images/blog/teste_olhinho_capa.jpg"
 date: "2026-11-16"
 tags: ["Saúde Infantil", "Prevenção", "Bebês"]
 ---

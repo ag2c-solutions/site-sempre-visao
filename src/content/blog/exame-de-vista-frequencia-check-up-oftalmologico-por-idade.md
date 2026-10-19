@@ -2,7 +2,7 @@
 title: "Exame de Vista: Com Que Frequência Fazer em Cada Idade?"
 description: "Descubra a frequência ideal do exame oftalmológico para bebês, crianças, adultos e idosos e quais sinais indicam que é hora de agendar seu check-up."
 slug: "exame-de-vista-frequencia-check-up-oftalmologico-por-idade"
-imageUrl: "/images/placeholder.svg"
+imageUrl: "/images/blog/exame_vista_checkup_capa.jpg"
 date: "2026-10-19"
 tags: ["Prevenção", "Check-up", "Saúde Ocular"]
 ---

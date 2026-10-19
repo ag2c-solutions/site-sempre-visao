@@ -2,7 +2,7 @@
 title: "Exame OCT: Como a Tomografia Ocular Salva a Visão"
 description: "Entenda o que é o exame de OCT (Tomografia de Coerência Óptica), quando é indicado e como ele detecta precocemente doenças no nervo óptico e retina."
 slug: "exame-oct-tomografia-coerencia-optica-retina-glaucoma"
-imageUrl: "/images/placeholder.svg"
+imageUrl: "/images/blog/exame_oct_retina_capa.jpg"
 date: "2026-10-05"
 tags: ["Exames", "Diagnóstico", "Tecnologia"]
 ---
